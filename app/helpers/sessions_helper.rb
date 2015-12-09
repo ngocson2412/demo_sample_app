@@ -21,7 +21,7 @@ module SessionsHelper
     elsif (user_id = cookies.signed[:user_id])
       # raise # The tests still pass, so this branch is currently untested.
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token]) #kiem tra gia tri remember_token co tren cookies voi remember_degest co trong database
+      if user && user.authenticated?(:remember, cookies[:remember_token]) #kiem tra gia tri remember_token co tren cookies voi remember_degest co trong database
         log_in user #neu trung thi log_in vao user hien tai
         @current_user = user 
       end
