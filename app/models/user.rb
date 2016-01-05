@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   has_many :microposts , dependent: :destroy
   has_many :comments
+  
+  has_many :active_likes, class_name:  "Like",
+                                  foreign_key: "liker_id",
+                                  dependent:   :destroy
+  has_many :liking, through: :active_likes, source: :liked                                                                  
+ 
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -91,6 +97,20 @@ class User < ActiveRecord::Base
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
+  end
+  # Follows a user.
+  def like(comment)
+    active_likes.create(liked_id: comment.id)
+  end
+
+  # Unfollows a user.
+  def unlike(comment)
+    active_likes.find_by(likeed_id: comment.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def liking?(comment)
+    liking.include?(comment)
   end
   private
 

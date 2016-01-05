@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                        :following, :followers]
+                                        :following, :followers ]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   def index
@@ -59,6 +59,7 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+  
   private
   	def user_params
   		params.require(:user).permit(:name, :email, :password,
