@@ -14,9 +14,13 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @micropost= Micropost.find(params[:id])
+    @destroy_id = @micropost.id
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
-    redirect_to request.referrer || root_url
+    respond_to do |format|
+      format.html { redirect_to @current_user }
+      format.js
+    end
   end
 
   private
