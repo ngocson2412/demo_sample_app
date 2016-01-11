@@ -1,14 +1,16 @@
 <div id="comment-<%= comment.id %>">
   <%= link_to gravatar_for(comment.user, size: 30), comment.user%>
   <span class="user"><%= link_to comment.user.name, comment.user %></span>
-  <span class="content"><%= comment.content %>
-  	<% if logged_in? %>
-        <%= render 'comments/like_form', comment: comment %>
-      <% end %>
-      <section class="stats">
-          <%= render 'shared/like_stats' , comment:comment%>
-       </section>
-  	<%= image_tag comment.picture.url if comment.picture? %>
+  <span class="content"><%= comment.content %> 
+    <div id ="img">
+      <%= image_tag comment.picture.url, class:"img" if comment.picture?%>    
+    </div>
+    <% if logged_in? %>
+      <%= render 'comments/like_form', comment: comment %>
+    <% end %>
+    <section class="stats">
+      <%= render 'shared/like_stats' , comment:comment%>
+    </section>
   	<% if (current_user?(comment.user)) || (current_user?(comment.micropost.user)) %>
         <%= link_to "delete",comment, method: :delete,data: { confirm: "You sure?" } ,remote: true%>
       <% end %>
