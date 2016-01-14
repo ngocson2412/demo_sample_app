@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       respond_to do |format|
-      format.html { redirect_to @current_user }
-      format.js
-    end
+        format.html { redirect_to @current_user }
+        format.js
+      end
     else
       redirect_to root_url
     end
