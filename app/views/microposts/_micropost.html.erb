@@ -11,9 +11,9 @@
         <%= link_to "delete", micropost, method: :delete,data: { confirm: "You sure?" } ,remote:true%>
     <% end %>
   </span>
-    <% if logged_in? %>
-      <%= render 'shared/comment_form', micropost: micropost %>
-    <% end %>
+  <% if current_user.following?(micropost.user) || logged_in? %>
+    <%= render 'shared/comment_form', micropost: micropost ,remote:true%>
+  <% end %>
   <div id="comments">
     <%= render micropost.comments %>
   </div>
