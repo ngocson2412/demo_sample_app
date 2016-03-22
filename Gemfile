@@ -12,6 +12,8 @@ gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.36.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'execjs'
+gem 'therubyracer'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
@@ -24,11 +26,13 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+group :assets do
+	gem 'sass-rails', '~> 5.0'
+	# Use Uglifier as compressor for JavaScript assets
+	gem 'uglifier', '>= 1.3.0'
+	# Use CoffeeScript for .coffee assets and views
+	gem 'coffee-rails', '~> 4.1.0'
+end
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
