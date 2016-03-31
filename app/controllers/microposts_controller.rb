@@ -2,16 +2,20 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
-  def create
-    @micropost = current_user.microposts.build(micropost_params)
-    if @micropost.save
-      respond_to do |format|
-      format.html { redirect_to @current_user }
-      format.js
-    end
+  def create  
+    if (micropost_params[:content].empty? && micropost_params[:picture].nil?)
+      render 'static_pages/home'
     else
-    	@feed_items = []
-      	render 'static_pages/home'
+      @micropost = current_user.microposts.build(micropost_params)
+      if @micropost.save
+        respond_to do |format|
+        format.html { redirect_to @current_user }
+        format.js
+      end
+      else
+      	@feed_items = []
+        	render 'static_pages/home'
+      end
     end
   end
 

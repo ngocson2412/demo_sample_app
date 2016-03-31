@@ -1,5 +1,5 @@
 <% unless current_user?(comment) %>
-  <div id="like_form" style="float: left;">
+  <div id="like_form" >
   <% if current_user.liking?(comment) %>
     <%= render 'comments/unlike',comment: comment %>
   <% else %>

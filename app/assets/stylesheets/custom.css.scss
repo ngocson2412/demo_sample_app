@@ -18,7 +18,7 @@ textarea {
     /* border-color: #090909; */
     border-bottom: 1px solid #103480;
 }
-span {
+#span {
   color: #fff;
 }
 .center {
@@ -52,6 +52,29 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #103480;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #fff;
+    background-color: #3a5795;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
+    background-color: #27408B;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li {
+    background-color: #3a5795;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #428bca;
+    color: #fff;
+}
+.navbar-nav > li > .dropdown-menu {
+    background-color: #3a5795;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #27408B;
 }
 /* header */
 
