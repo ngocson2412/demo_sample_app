@@ -1,21 +1,23 @@
 <div id="comment-<%= comment.id %>">
-  <%= link_to gravatar_for(comment.user, size: 30), comment.user%>
-  <span class="user"><%= link_to comment.user.name, comment.user %></span>
-  <span class="content"><%= comment.content %> 
-    <div id ="img">
-      <%= image_tag comment.picture.url, class:"img" if comment.picture?%>    
-    </div>
-    <% if logged_in? %>
-      <%= render 'comments/like_form', comment: comment %>
-    <% end %>
-    <section class="stats">
-      <%= render 'shared/like_stats' , comment:comment%>
-    </section>
-  	<% if (current_user?(comment.user)) || (current_user?(comment.micropost.user)) %>
-        <%= link_to "delete",comment, method: :delete,data: { confirm: "You sure?" } ,remote: true%>
+    <%= link_to gravatar_for(comment.user, size: 30), comment.user%>
+    <span class="user"><%= link_to comment.user.name, comment.user %></span>
+    <span class="content"><%= comment.content %> 
+      <div id ="img">
+        <%= image_tag comment.picture.url, class:"img" if comment.picture?%>    
+      </div>
+      <% if logged_in? %>
+        <%= render 'comments/like_form', comment: comment %>
       <% end %>
-  </span>
-  <span class="timestamp">
-  	Comments <%= time_ago_in_words(comment.created_at) %> ago.
-  </span>
+      <section class="stats" style="float: left;margin-top: 7px;">
+        <%= render 'shared/like_stats' , comment:comment%>
+      </section>
+      <div style="float: left;margin-top: 7px; margin-left: 10px; margin-right: 10px;">
+    	<% if (current_user?(comment.user)) || (current_user?(comment.micropost.user)) %>
+          <%= link_to "delete",comment, method: :delete,data: { confirm: "You sure?" } ,remote: true%>
+        <% end %>
+      </div>  
+    </span>
+    <span class="timestamp" style="margin-top: 7px; margin-left: 10px;">
+    	Comments <%= time_ago_in_words(comment.created_at) %> ago.
+    </span>
 </div>
