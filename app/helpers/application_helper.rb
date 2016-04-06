@@ -8,4 +8,10 @@ module ApplicationHelper
 			page_title + " | " +base_title
 		end
 	end
+	def form_image_select(micropost)  
+	  return image_tag micropost.picture.url(:medium),
+	                   id: 'image-preview',
+	                   class: 'img-responsive' if micropost.picture.exists?
+	  image_tag 'placeholder.jpg', id: 'image-preview', class: 'img-responsive'
+	end
 end

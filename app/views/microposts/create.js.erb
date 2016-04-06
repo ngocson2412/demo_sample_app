@@ -1,2 +1,6 @@
 $(".microposts").prepend("<%= j render('microposts/micropost', micropost: @micropost) %>")// them 1 set
 $("#micropost_content").val("");
+$('#image-preview').attr({
+    'src': '/assets/placeholder-7a2c913150659afcee71e0eac8d79dcb5bff0873de0145a6c1b7df764117b85a.jpg',
+    'alt': 'Placeholder 7a2c913150659afcee71e0eac8d79dcb5bff0873de0145a6c1b7df764117b85a'
+});
