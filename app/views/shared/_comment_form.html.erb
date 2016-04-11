@@ -1,14 +1,13 @@
 <div class="form-group">
-  <%= simple_form_for([micropost,current_user.comments.build],html: { multipart: true },remote: true) do |f| %>
+  <%= form_for([micropost,current_user.comments.build],html: { multipart: true },remote: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.text_field  :content ,placeholder: "Comment..." ,class:'form-control'%>
+    <%= f.text_field  :content ,placeholder: "Write a comment..." ,class:'form-control'%>
     <span class="picture ">
-       <%= f.input  :picture, label: false, input_html: { onChange: 'loadFile1(event)' }%>
-
+       <%= f.file_field :picture, :class => 'photo_upload', :id => "#{micropost.id}" %>  
     </span>
     <div class="row">
       <div class="col-md-4">
-        <%= image_tag 'placeholder.jpg', id: 'image-preview1', class: 'img-responsive'%>
+        <%= image_tag 'placeholder.jpg', id: "image-preview#{micropost.id}", class: 'image-preview1 img-responsive'%>
       </div>
     </div>
   <% end %>
@@ -18,6 +17,28 @@
       if (size_in_megabytes > 5) {
         alert('Maximum file size is 5MB. Please choose a smaller file.');
       }
+    });
+  </script>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                console.log(input.id);
+                var image = "#image-preview" + input.id;
+                reader.onload = function (e) {
+                    $(image).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(".photo_upload").change(function(){
+            readURL(this);
+            
+        });
     });
   </script>
 </div>

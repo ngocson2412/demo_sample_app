@@ -1,7 +1,25 @@
 $("#micropost-<%= @micropost.id %> #comments").prepend("<%= j render('comments/comment', comment: @comment) %>")// them 1 set
 // 	$("#micropost-<%= @micropost.id%> #comment_picture").val("");
 $("#micropost-<%= @micropost.id%> #comment_content").val("");
-$('#image-preview1').attr({
+$('.image-preview1').attr({
     'src': '/assets/placeholder-7a2c913150659afcee71e0eac8d79dcb5bff0873de0145a6c1b7df764117b85a.jpg',
     'alt': 'Placeholder 7a2c913150659afcee71e0eac8d79dcb5bff0873de0145a6c1b7df764117b85a'
 });
+      function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                console.log(input.id);
+                var image = "#image-preview" + input.id;
+                reader.onload = function (e) {
+                    $(image).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(".photo_upload").change(function(){
+            readURL(this);
+            
+        });

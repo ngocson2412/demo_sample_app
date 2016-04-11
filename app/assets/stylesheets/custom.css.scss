@@ -95,7 +95,7 @@ p {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 15px;
   font-weight: bold;
 }
 
@@ -299,6 +299,16 @@ input {
       padding: 5px 0;
     }
   }
+  @media (min-width: 768px) {
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+}
   .timestamp {
     color: $gray-light;
     display: block;
@@ -327,9 +337,6 @@ span.picture {
 .like{
   width: 60px;
 }
-.img {
-  width:260px;
-  height:145px;
-}
+
 #image-preview1 {
 }

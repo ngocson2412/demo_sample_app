@@ -1,4 +1,6 @@
 var loadFile1 = function(event) {  
-  var output = document.getElementById('image-preview1');
-  output.src = URL.createObjectURL(event.target.files[0]);
+  // var id = "image-preview1"
+  // console.log(id);
+  // var output = document.getElementById(id);
+  // output.src = URL.createObjectURL(event.target.files[0]);
 };
