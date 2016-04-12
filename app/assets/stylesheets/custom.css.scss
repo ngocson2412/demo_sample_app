@@ -4,6 +4,7 @@
 
 body {
   padding-top: 60px;
+  background: #e9eaed;
 }
 
 section {
@@ -184,7 +185,6 @@ aside {
     }
   }
 }
-
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -280,12 +280,20 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+.info {
+  padding: 0px 10px;
+  border-top: 1px solid #e8e8e8;
+  margin-top: 15px;
+  background: #fff;
+}
 .microposts {
   list-style: none;
   padding: 0;
   li {
-    padding: 10px 0;
+    padding: 14px 10px;
     border-top: 1px solid #e8e8e8;
+    margin-top: 15px;
+    background: #fff;
   }
   .user {
     margin-top: 5em;
@@ -297,15 +305,18 @@ input {
     img {
       display: block;
       padding: 5px 0;
+      width: 400px;
+      height: 225px;
     }
   }
-  @media (min-width: 768px) {
+  @media (max-width:500px) {
   .content {
     display: block;
     margin-left: 60px;
     img {
       display: block;
       padding: 5px 0;
+      width: 100%;
     }
   }
 }
@@ -313,6 +324,7 @@ input {
     color: $gray-light;
     display: block;
     margin-left: 60px;
+    margin-top: 28px;
   }
   .gravatar {
     float: left;
@@ -338,5 +350,9 @@ span.picture {
   width: 60px;
 }
 
-#image-preview1 {
+.img-responsive {
+}
+
+.button {
+  margin-top: 10px;
 }

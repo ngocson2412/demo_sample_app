@@ -28,7 +28,12 @@ class MicropostsController < ApplicationController
       format.js
     end
   end
-
+  def likers_post
+    @title = "User like Post"
+    @micropost  = Micropost.find(params[:id])
+    @users = @micropost.likers_post
+    render 'show_liker_post'
+  end
   private
 
     def micropost_params

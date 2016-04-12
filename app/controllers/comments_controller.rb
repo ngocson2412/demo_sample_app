@@ -27,7 +27,12 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-
+  def likers
+    @title = "User like Comment"
+    @comment  = Comment.find(params[:id])
+    @users = @comment.likers
+    render 'show_liker'
+  end
   private
     def comment_params
       params.require(:comment).permit(:content, :micropost_id, :picture)

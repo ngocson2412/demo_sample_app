@@ -3,11 +3,11 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "What's on your mind?..." %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.input  :picture, label: false, input_html: { onChange: 'loadFile(event)' }%>
   </span>
   <%= image_tag 'placeholder.jpg', id: 'image-preview', class: 'img-responsive'%>
+  <%= f.submit "Post", class: "btn btn-primary button" %>
 <% end %>
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {

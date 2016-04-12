@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
                                   foreign_key: "liker_id",
                                   dependent:   :destroy
   has_many :liking, through: :active_likes, source: :liked                                                                  
- 
+  has_many :active_like_posts, class_name:  "Likepost",
+                                  foreign_key: "user_id",
+                                  dependent:   :destroy
+  has_many :liking_post, through: :active_like_posts, source: :post
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -98,19 +101,33 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
-  # Follows a user.
+  # Like a comment.
   def like(comment)
     active_likes.create(liked_id: comment.id)
   end
 
-  # Unfollows a user.
+  # Unlike a comment.
   def unlike(comment)
     active_likes.find_by(likeed_id: comment.id).destroy
   end
 
-  # Returns true if the current user is following the other user.
+  # Returns true if the current user is following the comment
   def liking?(comment)
     liking.include?(comment)
+  end
+  # Like a post
+  def like_post(post)
+    active_like_posts.create(post_id: post.id)
+  end
+
+  # Unlike a post.
+  def unlike_post(post)
+    active_like_posts.find_by(post_id: post.id).destroy
+  end
+
+  # Returns true if the current user is following the post
+  def liking_post?(post)
+    liking_post.include?(post)
   end
   private
 
