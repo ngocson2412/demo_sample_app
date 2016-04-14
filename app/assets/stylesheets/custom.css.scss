@@ -4,6 +4,7 @@
 
 body {
   padding-top: 60px;
+  background: #e9eaed;
 }
 
 section {
@@ -355,8 +356,11 @@ span.picture {
   height: 30px;
   background-image: url("Unlike.png");
 }
-
-.img-responsive {
+.comment {
+  margin-left: 56px;
+}
+.img{
+      width: 350px;
 }
 
 .button {
