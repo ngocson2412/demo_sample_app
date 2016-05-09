@@ -1,0 +1,2 @@
+$("#comment-<%= @comment.id %> #like_form").html("<%= escape_javascript(render('comments/unlike',comment: @comment)) %>");
+$("#comment-<%= @comment.id %> #liking").html('<%=@comment.likers.count %> like');

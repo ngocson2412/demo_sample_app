@@ -1,7 +1,50 @@
-<% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-md-4">
+      <aside class="info">
+        <section class="user_info">
+          <%= render 'shared/user_info' %>
+        </section>
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+        <section class="micropost_form">
+          <%= render 'shared/micropost_form' %>
+        </section>
+      </aside>  
+    </div>
+    <div class="col-md-8">
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <div class="row">
+      <div class="col-md-8">
+      <h1>Welcome to the Beautiful Girl</h1>
+
+      <h2>
+        Cộng đồng những người phát cuồng vì girl xinh Việt Nam
+      </h2>
+
+      </div>
+      <div class="col-md-4">
+        <h1>Sign Up</h1>
+        <%= form_for(@user = User.new) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <%= f.text_field :name, placeholder:"Name",class: 'form-control' %>
+
+          <%= f.email_field :email, placeholder:"Email",class: 'form-control' %>
+
+          <%= f.password_field :password, placeholder:"Password", class: 'form-control' %>
+
+          <%= f.password_field :password_confirmation,placeholder:"Password confirmation", class: 'form-control' %>
+
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
